@@ -9,14 +9,22 @@ public class ManualSliceable : MonoBehaviour
     [Header("조각 분리 임펄스 세기")]
     public float sliceForce = 3f;
 
+    private SFXPlayer sfx;
+
     // 칼(Collider)별 진입 위치 저장
     private Dictionary<Collider, Vector3> entryPoints = new Dictionary<Collider, Vector3>();
+
+    void Start()
+    {
+        sfx = FindObjectOfType<SFXPlayer>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Knife")) return;
         // 진입한 순간 칼의 월드 위치를 저장
         entryPoints[other] = other.transform.position;
+        sfx.Play("Knife");
     }
 
     private void OnTriggerExit(Collider other)
