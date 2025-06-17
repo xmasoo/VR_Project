@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +8,7 @@ public class Blender : MonoBehaviour
     [Tooltip("과일 오브젝트에 붙인 Tag (예: \"Fruit\")")]
     public string fruitTag = "Fruit";
     [Tooltip("스폰할 쥬스 Prefab")]
-    public GameObject juicePrefab;
+    public GameObject[] juicePrefab;
     [Tooltip("쥬스를 생성할 위치 (빈 Transform)")]
     public Transform spawnPoint;
 
@@ -19,7 +20,7 @@ public class Blender : MonoBehaviour
         // 쥬스 스폰
         if (juicePrefab != null && spawnPoint != null)
         {
-            Instantiate(juicePrefab, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(juicePrefab[other.GetComponent<Juice>().type], spawnPoint.position, spawnPoint.rotation);
             Debug.Log("쥬스 생성됨");
         }
         else

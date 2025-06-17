@@ -25,6 +25,7 @@ public class ManualSliceable : MonoBehaviour
         // 진입한 순간 칼의 월드 위치를 저장
         entryPoints[other] = other.transform.position;
         sfx.Play("Knife");
+        Debug.Log("1");
     }
 
     private void OnTriggerExit(Collider other)
