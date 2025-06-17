@@ -10,6 +10,7 @@ public class Customer : MonoBehaviour
     [SerializeField] Image[] juiceImage;//쥬스 이미지
     [SerializeField] Animator animator;
     [SerializeField] SkinnedMeshRenderer faceRenderer;
+    [SerializeField] GameObject button;
 
     int happyIndex, angryIndex;
     private void Awake()
@@ -47,6 +48,9 @@ public class Customer : MonoBehaviour
         // 쥬스 말풍선 제거 
         Destroy(other.gameObject);
         bubble.gameObject.SetActive(false);
+
+        // 재시작 종료 버튼 활성화
+        button.SetActive(true);
     }
 
 }
